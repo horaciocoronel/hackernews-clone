@@ -33,20 +33,19 @@ function getArticleInfo(articleId) {
 				 if (xmlhttp.status == 200) {
 					 var response = JSON.parse(xmlhttp.responseText);
 					 var article = document.createElement("article");
-           article.innerHTML = `
-						 <div class="article-position">
-		 					<span class="rank">${position + 1}.</span>
-		 					<span class="arrow"></span>
-		 				</div>
-		 				<div class="article-title">
-		 					<span class="title"><a href="${response.url}" target="_blank">${response.title}</a> </span>
-		 					<span class="source">(${parseLocation(`${response.url}`)})</span>
-		 					<div class="article-subtitle">
-		 						<span class="score">${response.score}</span> points by <span class="author">${response.by}</span> <span class="posted">2 hours ago</span> | hide | <span class="comments">${response.descendants}</span> comments
-		 					</div>
-		 				</div>
-					 `
-
+	           article.innerHTML = `
+							 <div class="article-position">
+			 					<span class="rank">${position + 1}.</span>
+			 					<span class="arrow"></span>
+			 				</div>
+			 				<div class="article-title">
+			 					<span class="title"><a href="${response.url}" target="_blank">${response.title}</a> </span>
+			 					<span class="source">(${parseLocation(`${response.url}`)})</span>
+			 					<div class="article-subtitle">
+			 						<span class="score">${response.score}</span> points by <span class="author">${response.by}</span> <span class="posted">${parseTime(`${response.time}`)} </span> | hide | <span class="comments">${response.descendants}</span> comments
+			 					</div>
+			 				</div>
+						 `
 					 var main = document.querySelector("main");
 					 main.appendChild(article, main);
 
@@ -64,12 +63,42 @@ var parseLocation = function(href) {
     l.href = href;
 		var parsedUrl = l.hostname;
 		parsedUrl.replace('www.','')
-		console.log(parsedUrl);
+		// console.log(parsedUrl);
     return parsedUrl;
 };
 
+var parseTime = function(date) {
 
+  var seconds = Math.floor((new Date(Date.now()) - (date+'000')) / 1000);
+
+  var interval = Math.floor(seconds / 31536000);
+
+  if (interval > 1) {
+    return interval + " years ago";
+  }
+  interval = Math.floor(seconds / 2592000);
+  if (interval > 1) {
+    return interval + " months ago";
+  }
+  interval = Math.floor(seconds / 86400);
+  if (interval > 1) {
+    return interval + " days ago";
+  }
+  interval = Math.floor(seconds / 3600);
+  if (interval > 1) {
+    return interval + " hours ago";
+  }
+  interval = Math.floor(seconds / 60);
+  if (interval > 1) {
+    return interval + " minutes ago";
+  }
+  return Math.floor(seconds) + " seconds ago";
+	}
 
 
 
 hackerNewsTopStories();
+console.log(parseTime(1517846733));
+console.log(new Date(1517846733));
+console.log(Date.now());
+console.log(1517846733);
