@@ -20,6 +20,11 @@ nav {
 	line-height: 19px;
 }
 
+nav a {
+	text-decoration: none;
+	color: black;
+}
+
 .main-menu {
 	position: relative;
 	margin: 0;
@@ -63,12 +68,7 @@ nav {
 	padding: 0;
 }
 
-nav a {
-	text-decoration: none;
-	color: black;
+.separator {
+	background-color: #f6f6ef;
+	height: 10px;
 }
-
-/* #login {
-	float: right;
-	vertical-align: top;
-} */
