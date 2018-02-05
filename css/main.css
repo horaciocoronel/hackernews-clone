@@ -72,3 +72,41 @@ nav a {
 	background-color: #f6f6ef;
 	height: 10px;
 }
+
+/* Row */
+article {
+	display: block;
+	background-color: #f6f6ef;
+}
+
+article .article-position {
+	display: inline-block;
+	vertical-align: top;
+	text-align: right;
+}
+
+article .article-title {
+	display: inline-block;
+}
+
+article .article-subtitle {
+	display: block;
+	font-size: 10px;
+	color: #828282;
+}
+.rank {
+	color: #828282;
+}
+
+.arrow {
+	background: url("../images/grayarrow.gif") no-repeat center;
+	width: 10px;
+	height: 10px;
+	display: inline-block;
+	padding: 0 3px;
+}
+
+.source {
+	color: #828282;
+	font-size: 10px;
+}
