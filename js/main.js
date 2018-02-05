@@ -40,9 +40,9 @@ function getArticleInfo(articleId) {
 			 				</div>
 			 				<div class="article-title">
 			 					<span class="title"><a href="${response.url}" target="_blank">${response.title}</a> </span>
-			 					<span class="source">(${parseLocation(`${response.url}`)})</span>
+			 					<span class="source">(${parseLocation(response.url)})</span>
 			 					<div class="article-subtitle">
-			 						<span class="score">${response.score}</span> points by <span class="author"><a href="https://news.ycombinator.com/user?id=${response.by}" target="_self">${response.by}</a></span> <span class="posted"><a href="https://news.ycombinator.com/item?id=${response.id}" target="_self">${parseTime(`${response.time}`)}</a> </span> | hide | <span class="comments">${response.descendants}</span> comments
+			 						<span class="score">${response.score}</span> points by <span class="author"><a href="https://news.ycombinator.com/user?id=${response.by}" target="_self">${response.by}</a></span> <span class="posted"><a href="https://news.ycombinator.com/item?id=${response.id}" target="_self">${parseTime(response.time)}</a> </span> | hide | <span class="comments"><a href="https://news.ycombinator.com/item?id=${response.id}" target="_self">${response.descendants} comments</a></span>
 			 					</div>
 			 				</div>
 						 `
@@ -58,7 +58,7 @@ function getArticleInfo(articleId) {
 		 xmlhttp.send();
 }
 
-var parseLocation = function(href) {
+function parseLocation(href) {
     var l = document.createElement("a");
     l.href = href;
 		var parsedUrl = l.hostname;
@@ -68,11 +68,8 @@ var parseLocation = function(href) {
 };
 
 var parseTime = function(date) {
-
   var seconds = Math.floor((new Date(Date.now()) - (date+'000')) / 1000);
-
   var interval = Math.floor(seconds / 31536000);
-
   if (interval > 1) {
     return interval + " years ago";
   }
