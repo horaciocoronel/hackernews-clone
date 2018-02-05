@@ -4,3 +4,71 @@ body {
 	font-family: Verdana, Geneva, Arial, sans-serif;
 	font-size: 13px;
 }
+
+header {
+	box-sizing: border-box;
+	display: block;
+	background-color: #ff6600;
+}
+
+nav {
+	display: inline-block;
+	width: 100%;
+	padding: 3px 0 1px 0;
+	margin: 0;
+	vertical-align: top;
+	line-height: 19px;
+}
+
+.main-menu {
+	position: relative;
+	margin: 0;
+	padding: 0;
+}
+
+.main-menu > ul {
+	padding-left: 2px;
+	border: 0;
+	margin: 0;
+
+}
+
+.main-menu > li {
+	float:left;
+	padding: 0 5px 0 0;
+	margin: 0;
+	list-style: none;
+
+	/* line-height: 5px; */
+}
+
+.main-menu > li:first-child {
+	width: 16px;
+	height: 16px;
+	margin: 0 5px 2px 2px;
+	background: url("../images/y18.gif") no-repeat center;
+	background-size: 18px;
+	border: 1px solid white;
+}
+.main-menu > li:last-child {
+	vertical-align: top;
+	right: 0;
+	position: absolute;
+	color: #fff;
+}
+
+#logo-text {
+	font-weight: bold;
+	margin: 0 10px 0 0;
+	padding: 0;
+}
+
+nav a {
+	text-decoration: none;
+	color: black;
+}
+
+/* #login {
+	float: right;
+	vertical-align: top;
+} */
