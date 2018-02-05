@@ -42,7 +42,7 @@ function getArticleInfo(articleId) {
 			 					<span class="title"><a href="${response.url}" target="_blank">${response.title}</a> </span>
 			 					<span class="source">(${parseLocation(`${response.url}`)})</span>
 			 					<div class="article-subtitle">
-			 						<span class="score">${response.score}</span> points by <span class="author">${response.by}</span> <span class="posted">${parseTime(`${response.time}`)} </span> | hide | <span class="comments">${response.descendants}</span> comments
+			 						<span class="score">${response.score}</span> points by <span class="author"><a href="https://news.ycombinator.com/user?id=${response.by}" target="_self">${response.by}</a></span> <span class="posted"><a href="https://news.ycombinator.com/item?id=${response.id}" target="_self">${parseTime(`${response.time}`)}</a> </span> | hide | <span class="comments">${response.descendants}</span> comments
 			 					</div>
 			 				</div>
 						 `
