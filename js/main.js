@@ -118,28 +118,28 @@ hackerNewsTopStories(0,30);
 
 var myIndexNumber = 30;
 var myMaximumNumber = 60;
-// 				document.addEventListener('scroll', function() {
-//         distToBottom = getDistFromBottom();
-//         // console.log('scrolling', getDistFromBottom());
-//
-//         if (distToBottom <= 0 && myIndexNumber <= 500) {
-//           // pollingForData = true;
-//           // loadingContainer.classList.add('no-content');
-// 					setTimeout(function(){
-// 					hackerNewsTopStories(myIndexNumber, myMaximumNumber);
-// 					if (myIndexNumber < 480) {
-// 						myIndexNumber+=30;
-// 						myMaximumNumber+=30;
-// 						// console.log(myMaximumNumber);
-// 					} else if (myMaximumNumber >= 480) {
-// 						myIndexNumber+=20;
-// 						myMaximumNumber=500;
-// 						alert('no more articles available');
-// 					} else if (myIndexNumber > 500) {
-// 						return false;
-// 					}
-// 				}, 400);
-// 			} else if (myMaximumNumber === 500) {
-// 				return false;
-// 			}
-// });
+				document.addEventListener('scroll', function() {
+        distToBottom = getDistFromBottom();
+        // console.log('scrolling', getDistFromBottom());
+
+        if (distToBottom <= 0 && myIndexNumber <= 500) {
+          // pollingForData = true;
+          // loadingContainer.classList.add('no-content');
+					setTimeout(function(){
+					hackerNewsTopStories(myIndexNumber, myMaximumNumber);
+					if (myIndexNumber < 480) {
+						myIndexNumber+=30;
+						myMaximumNumber+=30;
+						// console.log(myMaximumNumber);
+					} else if (myMaximumNumber >= 480) {
+						myIndexNumber+=20;
+						myMaximumNumber=500;
+						alert('no more articles available');
+					} else if (myIndexNumber > 500) {
+						return false;
+					}
+				}, 400);
+			} else if (myMaximumNumber === 500) {
+				return false;
+			}
+});
