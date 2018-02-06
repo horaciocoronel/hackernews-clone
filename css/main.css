@@ -1,8 +1,9 @@
 body {
-	width: 84%;
-	margin: 8px auto;
+	width: 83.6%;
+	margin: 8px auto 0 auto;
 	font-family: Verdana, Geneva, Arial, sans-serif;
 	font-size: 13px;
+	padding: 0;
 }
 
 header {
@@ -23,6 +24,11 @@ nav {
 nav a {
 	text-decoration: none;
 	color: black;
+}
+
+main {
+	margin: 0;
+	padding: 0;
 }
 
 .main-menu {
@@ -54,6 +60,7 @@ nav a {
 	background: url("../images/y18.gif") no-repeat center;
 	background-size: 18px;
 	border: 1px solid white;
+	padding: 0;
 }
 .main-menu > li:last-child {
 	vertical-align: top;
@@ -107,6 +114,10 @@ article a:visited {
 }
 .rank {
 	color: #828282;
+}
+
+article:nth-child(-n+10) {
+	padding-left: 10px;
 }
 
 .arrow {
