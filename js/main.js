@@ -5,7 +5,7 @@ function hackerNewsTopStories() {
         if (xmlhttp.readyState == XMLHttpRequest.DONE) {
            if (xmlhttp.status == 200) {
 							var topStoriesArr = JSON.parse(xmlhttp.responseText);
-							console.log(topStoriesArr);
+							// console.log(topStoriesArr);
 							topStoriesArr.forEach(function(element) {
 								// Executes the getArticleInfo function passing the article ID
 								getArticleInfo(element);
@@ -67,7 +67,7 @@ function parseLocation(href) {
     return parsedUrl;
 };
 
-var parseTime = function(date) {
+function parseTime(date) {
   var seconds = Math.floor((new Date(Date.now()) - (date+'000')) / 1000);
   var interval = Math.floor(seconds / 31536000);
   if (interval > 1) {
@@ -90,12 +90,38 @@ var parseTime = function(date) {
     return interval + " minutes ago";
   }
   return Math.floor(seconds) + " seconds ago";
-	}
+}
+
+
+function getDistFromBottom () {
+
+  var scrollPosition = window.pageYOffset;
+  var windowSize     = window.innerHeight;
+  var bodyHeight     = document.body.offsetHeight;
+
+  return Math.max(bodyHeight - (scrollPosition + windowSize), 0);
+
+}
+
 
 
 
 hackerNewsTopStories();
-console.log(parseTime(1517846733));
-console.log(new Date(1517846733));
-console.log(Date.now());
-console.log(1517846733);
+// getDistFromBottom();
+
+
+document.addEventListener('scroll', function() {
+        distToBottom = getDistFromBottom();
+        console.log('scrolling', getDistFromBottom());
+
+        if (distToBottom > 0 && distToBottom <= 8888) {
+          // pollingForData = true;
+          // loadingContainer.classList.add('no-content');
+					alert('bottom');
+					console.log('alert');
+          // page++;
+          // xhr.open('GET', 'https://www.techinasia.com/wp-json/techinasia/2.0/posts?page='+page+'&per_page=5', true);
+          // xhr.send();
+
+        }
+});
