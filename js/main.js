@@ -1,4 +1,5 @@
-function hackerNewsTopStories() {
+var topStoriesArr;
+function hackerNewsTopStories(myIndexNumber, myMaximumNumber) {
     var xmlhttp = new XMLHttpRequest();
 
     xmlhttp.onreadystatechange = function() {
@@ -6,10 +7,15 @@ function hackerNewsTopStories() {
            if (xmlhttp.status == 200) {
 							var topStoriesArr = JSON.parse(xmlhttp.responseText);
 							// console.log(topStoriesArr);
-							topStoriesArr.forEach(function(element) {
-								// Executes the getArticleInfo function passing the article ID
-								getArticleInfo(element);
-							});
+
+								for (myIndexNumber; myIndexNumber < myMaximumNumber; myIndexNumber++) {
+									getArticleInfo(topStoriesArr[myIndexNumber])
+								}
+
+							// topStoriesArr.forEach(function(element) {
+							// 	// Executes the getArticleInfo function passing the article ID
+							// 	getArticleInfo(element);
+							// });
 							 // return xmlhttp.responseText;
            }
            else if (xmlhttp.status == 400) {
@@ -106,22 +112,34 @@ function getDistFromBottom () {
 
 
 
-hackerNewsTopStories();
+hackerNewsTopStories(0,30);
 // getDistFromBottom();
 
 
-document.addEventListener('scroll', function() {
+var myIndexNumber = 30;
+var myMaximumNumber = 60;
+				document.addEventListener('scroll', function() {
         distToBottom = getDistFromBottom();
-        console.log('scrolling', getDistFromBottom());
+        // console.log('scrolling', getDistFromBottom());
 
-        if (distToBottom > 0 && distToBottom <= 8888) {
+        if (distToBottom <= 0 && myIndexNumber <= 500) {
           // pollingForData = true;
           // loadingContainer.classList.add('no-content');
-					alert('bottom');
-					console.log('alert');
-          // page++;
-          // xhr.open('GET', 'https://www.techinasia.com/wp-json/techinasia/2.0/posts?page='+page+'&per_page=5', true);
-          // xhr.send();
-
-        }
+					setTimeout(function(){
+					hackerNewsTopStories(myIndexNumber, myMaximumNumber);
+					if (myIndexNumber < 480) {
+						myIndexNumber+=30;
+						myMaximumNumber+=30;
+						// console.log(myMaximumNumber);
+					} else if (myMaximumNumber >= 480) {
+						myIndexNumber+=20;
+						myMaximumNumber=500;
+						alert('no more articles available');
+					} else if (myIndexNumber > 500) {
+						return false;
+					}
+				}, 400);
+			} else if (myMaximumNumber === 500) {
+				return false;
+			}
 });
